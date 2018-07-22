@@ -90,20 +90,40 @@ fetch('https://randomuser.me/api/')
     const  actionList = await getData('https://yts.am/api/v2/list_movies.json?genre=action')
     const  dramaList = await getData('https://yts.am/api/v2/list_movies.json?genre=drama')
     const  animationList = await getData('https://yts.am/api/v2/list_movies.json?genre=animation')
+    // debugger
     // let  terrorList;
     // getData('https://yts.am/api/v2/list_movies.json?gnre=terror')
     // .then(function(data){
     //   console.log('terrorList',data)
     //   terrorList = data;
     // })
-    console.log(actionList);
-    console.log(dramaList);
-    console.log(animationList);
+    // console.log(actionList);
+    // console.log(dramaList);
+    // console.log(animationList);
     // console.log(data);
     // selectores jquery
     // const $home = $('.home')
     // selectores en javascript
     // const $home = document.getElementById('modal');
+
+    //templates en ES6
+    function videoItemTemplate(movie){
+      return (
+        `<div class="primaryPlaylistItem">
+          <div class="primaryPlaylistItem-image">
+            <img src="${movie.medium_cover_image}">
+          </div>
+          <h4 class="primaryPlaylistItem-title">
+            ${movie.title}
+          </h4>
+        </div>`
+      )
+    }
+    // console.log(videoItemTemplate('src/imges/covers/bitcoin.jpg', 'bitcoin'));
+    actionList.data.movies.forEach((movie) => {
+      const HTMLString = videoItemTemplate(movie);
+      console.log(HTMLString);
+    })
 
     const $actionContainer = document.querySelector('#action')
     const $dramaContainer = document.querySelector('#drama')
@@ -122,5 +142,14 @@ fetch('https://randomuser.me/api/')
     const $modalTitle = $modal.querySelector('h1')
     const $modalDescription = $modal.querySelector('p')
 
-    const 
+    //templates en jquery
+    '<div class="primaryPlaylistItem">' +
+      '<div class="primaryPlaylistItem-image">' +
+        '<img src="src/images/covers/midnight.jpg"> '+
+      '</div>' +
+      '<h4 class="primaryPlaylistItem-title">' +
+        'Titulo de la peli' +
+      '</h4>' +
+    '</div>';
+
   })()
